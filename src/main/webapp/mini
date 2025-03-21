@@ -1,0 +1,65 @@
+
+
+
+INSERT INTO property_sale (typename) VALUES
+('공공임대'),
+('민간분양');
+
+
+INSERT INTO property_type (typename) VALUES
+('아파트'), //1
+('빌라'), //2
+('오피스텔'), //3
+('상가'), //4
+('창고'); //5
+
+
+create table property(
+pidx int not null auto_increment,
+pname varchar(50) not null,
+ptype int not null,
+psalsetype int not null,
+paddress varchar(255) not null,
+punit int not null,
+pblocks int not null,
+psaledate date not null,
+pmoveindate date not null,
+pheating int not null,
+pbuilder varchar(50) not null,
+pstatus int not null,
+pmig varchar(255) null,
+pdate timestamp not null default current_timestamp,
+primary key(pidx),
+foreign key (ptype) references property_type(ptype),
+foreign key (psalsetype) references property_sale(psalsetype),
+foreign key (pheating) references property_heating(pheating),
+foreign key (pstatus) references property_status(pstatus)
+);
+
+
+
+
+
+create table property_type (
+    ptype int not null auto_increment,
+    typename varchar(20) not null,
+    primary key(ptype)
+);
+
+create table property_sale (
+    psalsetype int not null auto_increment,
+    typename varchar(20) not null,
+    primary key(psalsetype)
+);
+
+create table property_heating (
+    pheating int not null auto_increment,
+    typename varchar(20) not null,
+    primary key(pheating)
+);
+
+create table property_status (
+    pstatus int not null auto_increment,
+    typename varchar(10) not null,
+    primary key(pstatus)
+);
