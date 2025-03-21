@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/3.0 https://maven.apache.org/xsd/maven-3.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>miniproject</groupId>
+  <artifactId>miniproject</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-war-plugin</artifactId>
+<version>3.3.2</version>
+</plugin>
+</plugins>
+<pluginManagement>
+<plugins>
+<!-- This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
+<plugin>
+<groupId>org.eclipse.m2e</groupId>
+<artifactId>lifecycle-mapping</artifactId>
+<version>1.0.0</version>
+<configuration>
+<lifecycleMappingMetadata>
+<pluginExecutions>
+<pluginExecution>
+<pluginExecutionFilter>
+<groupId> org.apache.maven.plugins </groupId>
+<artifactId> maven-resources-plugin </artifactId>
+<versionRange>[2.6,)</versionRange>
+<goals>
+<goal>resources</goal>
+<goal>testResources</goal>
+</goals>
+</pluginExecutionFilter>
+<action>
+<ignore/>
+</action>
+</pluginExecution>
+</pluginExecutions>
+</lifecycleMappingMetadata>
+</configuration>
+</plugin>
+</plugins>
+</pluginManagement>
+</build>
+ 
+ 
+ <!--라이브러리 -->
+<dependencies>
+<dependency>
+<groupId>javax.inject</groupId>
+<artifactId>javax.inject</artifactId>
+<version>1</version>
+</dependency>
+<!--  log4j / console에 출력 sysout과 비슷 -->
+<dependency>
+<groupId>log4j</groupId>
+<artifactId>log4j</artifactId>
+<version>1.2.17</version>
+<scope>runtime</scope>
+<!-- runtime : 실시간   -->
+</dependency>
+<!--  SLF4J7 : JDK 및 라이브러리 호출에 대한 정보  -->
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>jcl-over-slf4j</artifactId>
+<version>2.0.17</version>
+</dependency>
+<!--  SLF4J LOG4J 12 Binding Relocated  -->
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>slf4j-log4j12</artifactId>
+<version>2.0.17</version>
+<type>pom</type>
+<scope>runtime</scope>
+<!-- runtime : 실시간   -->
+</dependency>
+<!--  SLF4J API Module 로그기록  -->
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>slf4j-api</artifactId>
+<version>2.0.17</version>
+<scope>runtime</scope>
+<!-- runtime : 실시간   -->
+</dependency>
+<!--  mybatis-spring  -->
+<dependency>
+<groupId>org.mybatis</groupId>
+<artifactId>mybatis-spring</artifactId>
+<version>2.0.6</version>
+</dependency>
+<!--  mybatis  -->
+<dependency>
+<groupId>org.mybatis</groupId>
+<artifactId>mybatis</artifactId>
+<version>3.5.6</version>
+</dependency>
+<!--  mysql 라이브러리  -->
+<dependency>
+<groupId>mysql</groupId>
+<artifactId>mysql-connector-java</artifactId>
+<version>8.0.30</version>
+</dependency>
+<!--  Java를 web으로 사용할 수 있는 Servlet 라이브러리  -->
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>javax.servlet-api</artifactId>
+<version>3.1.0</version>
+<scope>provided</scope>
+</dependency>
+<!--  was 버전 세팅  -->
+<dependency>
+<groupId>org.apache.tomcat</groupId>
+<artifactId>tomcat-catalina</artifactId>
+<version>8.5.61</version>
+</dependency>
+<!--  DBCP : Database connection  -->
+<dependency>
+<groupId>commons-dbcp</groupId>
+<artifactId>commons-dbcp</artifactId>
+<version>1.4</version>
+</dependency>
+<!--  Spring MVC  -->
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-webmvc</artifactId>
+<version>5.3.39</version>
+</dependency>
+<!--  Spring + Mysql : Model, Controller, View에서 사용 가능 mysql 서버 접속 환경설정 라이브러리 -->
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-jdbc</artifactId>
+<version>5.3.39</version>
+</dependency>
+<!--  JSP + JSTL 언어를 사용하기 위한 라이브러리  -->
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>jstl</artifactId>
+<version>1.2</version>
+</dependency>
+<!--  Lombok : DTO,VO (Getter/Setter) 사용 편의를 위함  -->
+<dependency>
+<groupId>org.projectlombok</groupId>
+<artifactId>lombok</artifactId>
+<version>1.18.36</version>
+<scope>provided</scope>
+</dependency>
+<!--  파일 업로드 라이브러리  -->
+<dependency>
+<groupId>commons-fileupload</groupId>
+<artifactId>commons-fileupload</artifactId>
+<version>1.5</version>
+</dependency>
+</dependencies>
+  
+<!--JAVA ver.11  -->
+<properties>
+<maven.compiler.source>11</maven.compiler.source>
+<maven.compiler.target>11</maven.compiler.target>
+</properties>
+  
+  
+  
+  
+</project>
