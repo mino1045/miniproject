@@ -18,5 +18,14 @@ public class realty_dao {
 		return result;
 	}
 	
+	//select
+	/////email_check
+	member_dto email_check(String memail) {
+		member_dto email_used = this.st.selectOne("email_check",memail);
+		return email_used;
+	}
+	
+	
+	
 
 }

@@ -10,4 +10,10 @@ INSERT INTO member (midx,memail,mpass,mname,mtel,age_terms,service_terms,privacy
 
 
 
+<!--select  -->
+<!--이메일 중복체크 -->
+<select id="email_check" resultType="member_dto" parameterType="String">
+select * from member where memail=#{memail}
+</select>
+
 </mapper>

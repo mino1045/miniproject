@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" type="text/css" href="./css/index.css?v=2">
-<link rel="stylesheet" type="text/css" href="./css/member_join.css?v=2">
+<link rel="stylesheet" type="text/css" href="./css/member_join.css?v=3">
 <style>
 .box {
    width: 800px;
@@ -28,20 +28,29 @@
 <form id="f" method="POST" action="./joinok.do">
 		<p>이메일로 회원가입</p>
 		<div>
-			<a>이메일</a> <input type="text" name="memail" placeholder=" 이메일 주소를 입력해주세요." autocomplete="none" style="width:400px; float:left;"> <input type="button" value="중복체크" class="mail_btn">
+			<a>이메일</a> <input type="text" name="memail" oninput="email_reg()" placeholder=" 이메일 주소를 입력해주세요." autocomplete="none" style="width:400px; float:left;">
+			<input type="button" id="emailcheck" value="중복체크" class="mail_btn" onclick="email_check()">
+		</div>
+		<span id="email_message" class="html_message"></span>
+		
+		
+		<div>
+			<a>비밀번호</a> <input type="password" name="mpass" placeholder=" 10~16자(영문,숫자,특수 문자 조합)로 입력해주세요." autocomplete="none" oninput="pwck()">
 		</div>
 		<div>
-			<a>비밀번호</a> <input type="password" name="mpass" placeholder=" 10~16자(영문,숫자,특수 문자 조합)로 입력해주세요." autocomplete="none">
+			<a>비밀번호 확인</a> <input type="password" id="mpass_check"  placeholder=" 비밀번호를 다시 한 번 입력해주세요." autocomplete="none" oninput="pwck()">
 		</div>
+		<span id="mpass_message" class="html_message"></span>
+		
 		<div>
-			<a>비밀번호 확인</a> <input type="password" name="mpass_check"  placeholder=" 비밀번호를 다시 한 번 입력해주세요." autocomplete="none">
+		    <a>이름</a> <input type="text" oninput="nmck()" name="mname" placeholder=" 이름을 입력해주세요." autocomplete="none">
 		</div>
+		<span id="name_message" class="html_message"></span>
+		
 		<div>
-		    <a>이름</a> <input type="text" name="mname" placeholder=" 이름을 입력해주세요." autocomplete="none">
+		    <a>휴대폰번호</a> <input type="text" name="mtel" oninput="telck()" placeholder=" -없이 숫자만 입력해주세요." autocomplete="none">
 		</div>
-		<div>
-		    <a>휴대폰번호</a> <input type="text" name="mtel" placeholder=" -없이 숫자만 입력해주세요." autocomplete="none">
-		</div>
+		<span id="tel_message" class="html_message"></span>
 		<div>
 		<input type="checkbox" id="check_all"> <span>전체 동의</span> </div>
 		
@@ -63,5 +72,5 @@
 <cr:import url="./copyright.jsp"></cr:import>
 
 </body>
-<script src="./js/join.js"></script>
+<script src="./js/join.js?v=5"></script>
 </html>
