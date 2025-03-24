@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="META-INF.mapper"></mapper>
+<mapper namespace="META-INF.mapper">
+
+<!--insert-->
+<!--member 회원가입-->
+<insert id="member_join">
+INSERT INTO member (midx,memail,mpass,mname,mtel,age_terms,service_terms,privacy_terms,marketing_terms,mdate) VALUES (#{midx},#{memail},#{mpass},#{mname},#{mtel},#{age_terms},#{service_terms},#{privacy_terms},#{marketing_terms},now())
+</insert>
+
+
+
+</mapper>

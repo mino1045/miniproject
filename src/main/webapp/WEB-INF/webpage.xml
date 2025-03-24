@@ -15,7 +15,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 </beans:bean>
 
 <!--컨트롤러 경로 설정  -->
-<context:component-scan base-package="miniproject"/>
+<context:component-scan base-package="realty"/>
 
  <!--Spring i/o를 사용하기 위한 환경설정-->
  <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

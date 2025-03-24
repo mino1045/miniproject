@@ -34,9 +34,12 @@ http://mybatis.org/schema/mybatis-spring.xsd
 <!-- destroy-method="close" : 문법이 완료되었을 경우 자동으로 database를 종료 -->
 <bean id="dbinfo" class="org.apache.commons.dbcp.BasicDataSource"> <!-- destroy-method="close" 위에서 쓰면 안 됨 -->
 <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-<property name="url" value="jdbc:mysql://localhost:3306/mrp"/>
+<property name="url" value="jdbc:mysql://database-1.cyfsgqcawf37.us-east-1.rds.amazonaws.com:3306/database-1"/>
+<property name="username" value="admin"/>
+<property name="password" value="fksdud91??"></property>
+<!-- <property name="url" value="jdbc:mysql://localhost:3306/mrp"/>
 <property name="username" value="root"/>
-<property name="password" value="p402402"></property>
+<property name="password" value="p402402"></property> -->
 </bean>
 
 <!--mybatis 구조의 db활용 //META-INF를 어디에 만드느냐? resources

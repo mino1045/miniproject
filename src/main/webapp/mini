@@ -1,4 +1,18 @@
-
+create table member(
+midx int not null auto_increment,
+memail varchar(100) not null,
+mpass varchar(50) not null,
+mname varchar(25) not null,
+mtel char(11) not null,
+age_terms enum ('Y','N') default 'N' not null,
+service_terms enum ('Y','N') default 'N' not null,
+privacy_terms enum ('Y','N') default 'N' not null,
+marketing_terms enum ('Y','N') default 'N',
+mdate timestamp not null default current_timestamp,
+primary key(midx),
+unique key memail (memail),
+unique key mtel (mtel)
+);
 
 
 INSERT INTO property_sale (typename) VALUES
