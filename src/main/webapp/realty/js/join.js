@@ -1,10 +1,12 @@
+
+	
 //////////이메일 유효성 검사
 function email_reg(){
+	var email_message = document.getElementById('email_message');
+	email_message.textContent = "";
 	var memail = document.getElementsByName('memail')[0].value;
 	var mail_reg = /^[0-9a-z_-]+@[0-9a-zㄱ-힇\.]+\.[0-9a-zㄱ-힇\.]{2,}$/i;
-	var email_message = document.getElementById('email_message');
-	
-	email_message.textContent = "";
+
 
 	if(!mail_reg.test(memail)){
 		email_message.textContent = "올바른 이메일 주소를 입력해주세요.";
@@ -16,20 +18,27 @@ function email_reg(){
 
 
 //////////이메일 중복체크
+
 function email_check(){
 	var memail = document.getElementsByName('memail')[0].value;
-	console.log(memail)
+	var m_dup = document.getElementById("email_dup");
+
+	
+	if(!email_reg()){
+		alert("유효한 이메일 주소를 입력해주세요");
+		return false;
+	}
+
 	http = new XMLHttpRequest();
 	http.onreadystatechange = function(){
 			if(http.readyState == 4 && http.status == 200){
-						console.log(this.response);
+			console.log(this.response);
 
 			if(this.response == "ok"){
 				alert("사용 가능한 이메일입니다");
-				return true;
+				m_dup.value = "Y";
 			}else{
 				alert("이미 사용 중인 이메일입니다.");
-				return false;
 			}
 		} else{
 			console.log(this.response);
@@ -55,6 +64,8 @@ function pwck(){
 		return false;
 	} else if(mpass !== mpasscheck) {
 		mpass_message.textContent = "동일한 비밀번호를 입력해주세요";
+		
+	} else {
 		return true;
 	}
 }
@@ -94,6 +105,19 @@ function telck(){
 	}
 }
 
+//////////약관 txt 로드
+window.onload = function() {
+	var http = new XMLHttpRequest;
+	http.open("GET","../realty/agree1.txt",false);
+	http.send();
+	document.getElementById("ag").innerHTML = http.response;
+	
+	var http2 = new XMLHttpRequest;
+	http2.open("GET","../realty/agree2.txt",false);
+	http2.send();
+	document.getElementById("ag2").innerHTML = http.response;
+}
+
 
 //////////약관 전체체크
 var checkall = document.getElementById("check_all");
@@ -107,32 +131,32 @@ checkall.addEventListener("change", function() {
 
 //////////회원가입
 function join(){
-	var ec = email_check();
 	var pc = pwck();
 	var nc = nmck();
 	var tc = telck()
+	var m_dup = document.getElementById("email_dup"); //이메일중복체크값
 	
 	function termck(){
 	var at = document.getElementsByName('age_terms')[0];
     var st = document.getElementsByName('service_terms')[0];
     var pt = document.getElementsByName('privacy_terms')[0];
-
+	
     if (!at.checked || !st.checked || !pt.checked) {
         alert("모든 필수 약관에 동의해 주세요.");
         return false; 
     } else {
 	return true; 
 	}
-
+	}
+	
 	var termck = termck()
-		
-	}
-
-	if(ec && pc && nc && tc && termck ){
+	if(m_dup.value=="Y" && pc && nc && tc && termck ){
 	f.submit();
+	} else if(m_dup.value=="N"){
+		alert("아이디 중복체크를 해주세요")
+	
+	} else {
+		alert("입력값을 확인해주세요")
 	}
-
-	
-	
 
 }

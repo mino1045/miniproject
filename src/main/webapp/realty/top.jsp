@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="./css/index.css?v=7">
+<link rel="stylesheet" type="text/css" href="./css/index.css?v=1">
+<%@ taglib prefix="cr" uri="http://java.sun.com/jsp/jstl/core" %>
+
     
 <!--top -->
  <!--최상단-->
@@ -20,11 +22,15 @@
       <li>업체의뢰</li>
       <li>의뢰현황</li>
       <li class="logins">
-        <!--
-        홍길동님 환영합니다.[로그아웃]
-        -->
-        <span title="로그인"><img src="./ico/login.svg"></span>
+        <cr:choose>
+        <cr:when test="${not empty sessionScope.memail}">
+        <a href="./logout.do"> ${sessionScope.memail}님 환영합니다. [로그아웃]</a>
+        </cr:when>
+        <cr:otherwise>
+        <span title="로그인"><a href="./login.do" title="회원가입"><img src="./ico/login.svg"></a></span>
         <span title="회원가입"><a href="./member_join.do" title="회원가입"><img src="./ico/membership.svg"></a></span>
+        </cr:otherwise>
+        </cr:choose>
       </li>
     </ul>
   </div>

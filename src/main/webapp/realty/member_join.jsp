@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>회원가입</title>
 <link rel="stylesheet" type="text/css" href="./css/index.css?v=2">
 <link rel="stylesheet" type="text/css" href="./css/member_join.css?v=3">
 <style>
@@ -30,6 +30,7 @@
 		<div>
 			<a>이메일</a> <input type="text" name="memail" oninput="email_reg()" placeholder=" 이메일 주소를 입력해주세요." autocomplete="none" style="width:400px; float:left;">
 			<input type="button" id="emailcheck" value="중복체크" class="mail_btn" onclick="email_check()">
+			<input type="hidden" id="email_dup" value="N"> 
 		</div>
 		<span id="email_message" class="html_message"></span>
 		
@@ -60,9 +61,9 @@
 		<div class="box1"><input type="checkbox" name="age_terms" value="Y"> <a class="a1">(필수) <span>만 14세 이상입니다.</span></a></div>
 		<div class="box2"><input type="checkbox" name="service_terms" value="Y"> <a class="a2">(필수) <span><u>이용약관</u>에 동의</span></a></div>
 		<div class="box3"><input type="checkbox" name="privacy_terms" value="Y"> <a class="a3">(필수) <span><u>개인정보 수집 및 이용</u>에 동의</span></a></div>
-		<section class="text1">   </section>
+		<section class="text1" id="ag">   </section>
 		<div class="box4"><input type="checkbox" name="marketing_terms" value="Y"> <span>(선택) 마케팅 수신에 동의</span></div>
-		<section class="text2">   </section>
+		<section class="text2" id="ag2">   </section>
 	</div>
 		<div><input type="button" value="가입 하기" onclick="join()"></div>
 	</form>
@@ -72,5 +73,5 @@
 <cr:import url="./copyright.jsp"></cr:import>
 
 </body>
-<script src="./js/join.js?v=5"></script>
+<script src="./js/join.js?v=4"></script>
 </html>

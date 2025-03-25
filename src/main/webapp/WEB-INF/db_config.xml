@@ -26,33 +26,32 @@ http://mybatis.org/schema/mybatis-spring
 http://mybatis.org/schema/mybatis-spring.xsd
 ">
 
-<!--db 접속을 활성화하는 xml  -->
-<context:annotation-config></context:annotation-config> <!--Model에서 DB를 사용할 수 있도록 함  -->
+<!--db 접속 -->
+<context:annotation-config></context:annotation-config> 
 
 <!--java Connection interface / database 정보-->
-
-<!-- destroy-method="close" : 문법이 완료되었을 경우 자동으로 database를 종료 -->
-<bean id="dbinfo" class="org.apache.commons.dbcp.BasicDataSource"> <!-- destroy-method="close" 위에서 쓰면 안 됨 -->
+<bean id="dbinfo" class="org.apache.commons.dbcp.BasicDataSource">
 <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-<property name="url" value="jdbc:mysql://database-1.cyfsgqcawf37.us-east-1.rds.amazonaws.com:3306/database-1"/>
+<property name="url" value="jdbc:mysql://database-1.cyfsgqcawf37.us-east-1.rds.amazonaws.com:3306/database-1?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"/>
+
 <property name="username" value="admin"/>
 <property name="password" value="fksdud91??"></property>
-<!-- <property name="url" value="jdbc:mysql://localhost:3306/mrp"/>
-<property name="username" value="root"/>
-<property name="password" value="p402402"></property> -->
 </bean>
 
-<!--mybatis 구조의 db활용 //META-INF를 어디에 만드느냐? resources
-META-INF : xml 클래스를 이용해서 ? 환경설정 html의 메타태그와 비슷하다
-  -->
 <bean id="sqlfact" class="org.mybatis.spring.SqlSessionFactoryBean" >
-<property name="dataSource" ref="dbinfo"></property> <!--dbinfo에서 정보를 받아서dataSource에 넣는다 ref 상속   -->
+<property name="dataSource" ref="dbinfo"></property> 
 <property name="configLocation" value="classpath:/META-INF/config.xml"></property>
-<property name="mapperLocations" value="classpath:/META-INF/mapper.xml"></property>
+<property name="mapperLocations"> 
+<array>
+<value>classpath:/META-INF/member_query.xml</value> <!--member mapper  -->
+
+</array>
+
+</property>
 </bean>
 
-<!--mybatis template(Interface화) ref : 의존성 -->
-<bean id="template" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="close"> <!--현재 ibatis 사용해서 여기에 close?  -->
+<!--mybatis template-->
+<bean id="template" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="close">
 <constructor-arg name="sqlSessionFactory" ref="sqlfact"/>
 </bean>
 
